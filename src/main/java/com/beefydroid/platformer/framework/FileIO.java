@@ -6,6 +6,9 @@ import java.io.OutputStream;
 
 /**
  * Created by Leo on 7/06/13.
+ *
+ * File management interface class.
+ *
  */
 public interface FileIO {
     public InputStream readAsset(String fileName) throws IOException;

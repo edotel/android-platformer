@@ -4,6 +4,9 @@ import java.util.List;
 
 /**
  * Created by Leo on 7/06/13.
+ *
+ * Interface for input types, such as touch and keyboard.
+ *
  */
 public interface Input {
     public static class KeyEvent {

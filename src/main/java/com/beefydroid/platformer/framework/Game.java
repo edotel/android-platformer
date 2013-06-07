@@ -2,6 +2,9 @@ package com.beefydroid.platformer.framework;
 
 /**
  * Created by Leo on 7/06/13.
+ *
+ * Basic fundamental classes for a game.
+ *
  */
 public interface Game {
     public Input getInput();

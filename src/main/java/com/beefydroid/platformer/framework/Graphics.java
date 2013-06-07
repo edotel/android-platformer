@@ -4,6 +4,8 @@ package com.beefydroid.platformer.framework;
 
 /**
  * Created by Leo on 7/06/13.
+ *
+ * Basic graphics interface.
  */
 public interface Graphics {
     public static enum PixmapFormat {
