@@ -1,12 +1,10 @@
-package com.beefydroid.platformer.framework;
-
-
-
 /**
  * Created by Leo on 7/06/13.
  *
- * Basic graphics interface.
+ * Basic graphics interface. Used for AndroidFastRenderView graphics, not OpenGL ES
  */
+package com.beefydroid.platformer.framework;
+
 public interface Graphics {
     public static enum PixmapFormat {
         ARGB8888, ARGB4444, RGB565

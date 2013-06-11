@@ -1,13 +1,13 @@
-package com.beefydroid.platformer.framework;
-
-import java.util.List;
-
 /**
  * Created by Leo on 7/06/13.
  *
  * Interface for input types, such as touch and keyboard.
  *
  */
+package com.beefydroid.platformer.framework;
+
+import java.util.List;
+
 public interface Input {
     public static class KeyEvent {
         public static final int KEY_DOWN = 0;

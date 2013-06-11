@@ -1,11 +1,12 @@
-package com.beefydroid.platformer.framework;
-
 /**
  * Created by Leo on 7/06/13.
  *
  * Streaming music from "disk" interface
  *
  */
+
+package com.beefydroid.platformer.framework;
+
 public interface Music {
     public void play();
 

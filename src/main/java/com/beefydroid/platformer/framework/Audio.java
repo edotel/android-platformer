@@ -1,4 +1,3 @@
-package com.beefydroid.platformer.framework;
 
 /**
  * Created by Leo on 7/06/13.
@@ -7,6 +6,8 @@ package com.beefydroid.platformer.framework;
  * Music: Constant streaming from disk
  * Sound: Loaded into RAM and played from RAM
  */
+package com.beefydroid.platformer.framework;
+
 public interface Audio {
     public Music newMusic(String filename);
 

@@ -1,15 +1,15 @@
-package com.beefydroid.platformer.framework;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 /**
  * Created by Leo on 7/06/13.
  *
  * File management interface class.
  *
  */
+package com.beefydroid.platformer.framework;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public interface FileIO {
     public InputStream readAsset(String fileName) throws IOException;
 

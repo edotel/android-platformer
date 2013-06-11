@@ -1,3 +1,6 @@
+/**
+ * Created by Leo on 7/06/13.
+ */
 package com.beefydroid.platformer.framework;
 
 import java.util.ArrayList;
@@ -8,8 +11,5 @@ import com.beefydroid.platformer.framework.GameObject;
 
 import android.util.FloatMath;
 
-/**
- * Created by Leo on 7/06/13.
- */
 public class SpatialHashGrid {
 }
