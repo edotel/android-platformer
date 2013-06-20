@@ -8,13 +8,13 @@ import javax.microedition.khronos.opengles.GL10;
 
 import com.beefydroid.simpleplatformer.framework.Screen;
 import com.beefydroid.simpleplatformer.framework.impl.GLGame;
+import com.beefydroid.simpleplatformer.game.levels.test.TestLevelScreen;
 
 public class Platformer extends GLGame{
-    boolean firstTimeCreated = false;
+    boolean firstTimeCreated = true;
 
     public Screen getStartScreen() {
-        //return new FirstLevelTest(this);
-        return null;
+        return new TestLevelScreen(this);
     }
 
     @Override
@@ -22,11 +22,13 @@ public class Platformer extends GLGame{
         super.onSurfaceCreated(gl, config);
         if (firstTimeCreated) {
             //Load settings
-
+            Settings.load(getFileIO());
             //Load assets
+            Assets.load(this);
 
             firstTimeCreated = false;
         } else {
+            Assets.reload();
             //Reload assets in case some were freed from RAM
         }
     }
