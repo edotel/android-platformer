@@ -6,24 +6,22 @@ import com.beefydroid.simpleplatformer.game.levels.test.TestWorld;
 /**
  * Created by Leo on 13/06/13.
  */
-public class JumpMan extends DynamicGameObject{
+public class Player extends DynamicGameObject{
 
     public static final int STATE_IDLE = 0x01;      // 0001
     public static final int STATE_JUMPING = 0x02;   // 0010
     public static final int STATE_LEFT = 0x04;      // 0100
     public static final int STATE_RIGHT = 0x08;     // 1000
     public static final float JUMP_VELOCITY = 11;
-    public static final float MOVE_VELOCITY = 1.5f;
-    public static final float WIDTH = 0.8f;
-    public static final float HEIGHT = 0.8f;
+    public static final float MOVE_VELOCITY = 2.5f;
 
    // MOVEMENT_STATES state;
     int state;
     float stateTime;
     boolean grounded = false;
 
-    public JumpMan(float x, float y){
-        super(x, y, WIDTH, HEIGHT);
+    public Player(float x, float y, float width, float height){
+        super(x, y, width, height);
         state = STATE_IDLE;
         stateTime = 0;
     }
@@ -47,10 +45,10 @@ public class JumpMan extends DynamicGameObject{
             }
             // If moving left
             if ((state & STATE_LEFT) == STATE_LEFT){
-                velocity.x = MOVE_VELOCITY;
+                velocity.x = -MOVE_VELOCITY;
             }
             // If moving right
-            if ((state & STATE_RIGHT) == STATE_RIGHT){
+            else if ((state & STATE_RIGHT) == STATE_RIGHT){
                 velocity.x = MOVE_VELOCITY;
             }
             //Add acceleration to velocity
@@ -73,6 +71,7 @@ public class JumpMan extends DynamicGameObject{
         //update bounds
         bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
         grounded = false;
+        stateTime += deltaTime;
     }
     public void jump(){
         // If idle, remove idle state
@@ -85,9 +84,10 @@ public class JumpMan extends DynamicGameObject{
         }
     }
     public void moveLeft(){
+        //velocity.x = -MOVE_VELOCITY;
         //If already moving right, cancel out and remove moving right state
         if ((state & STATE_RIGHT) == STATE_RIGHT){
-            state -= STATE_RIGHT;
+            state = 0;
         }
         // If idle, remove idle state
         else if (state == STATE_IDLE){
@@ -95,13 +95,14 @@ public class JumpMan extends DynamicGameObject{
         }
         // Otherwise add move left state
         else {
-            state &= STATE_RIGHT;
+            state = STATE_LEFT;
         }
     }
     public void moveRight(){
+        //velocity.x = MOVE_VELOCITY;
         // If moving left, cancel out and remove left state
         if ((state & STATE_LEFT) == STATE_LEFT){
-            state -= STATE_LEFT;
+            state = 0;
         }
         // If idle, remove idle state
         if (state == STATE_IDLE) {
@@ -109,8 +110,11 @@ public class JumpMan extends DynamicGameObject{
         }
         // Otherwise add move right state
         else {
-            state &= STATE_RIGHT;
+            state = STATE_RIGHT;
         }
+    }
+    public void stop(){
+        state = STATE_IDLE;
     }
     public int getState(){
         return state;

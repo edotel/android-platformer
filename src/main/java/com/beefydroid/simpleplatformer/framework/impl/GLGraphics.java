@@ -34,4 +34,8 @@ public class GLGraphics {
     public int getHeight() {
         return glView.getHeight();
     }
+
+    public float getAspectRadio() {
+        return (float) glView.getWidth() / (float) glView.getHeight();
+    }
 }

@@ -1,5 +1,7 @@
 package com.beefydroid.simpleplatformer.game.levels.test;
 
+import android.util.Log;
+
 import com.beefydroid.simpleplatformer.framework.Game;
 import com.beefydroid.simpleplatformer.framework.gl.Camera2D;
 import com.beefydroid.simpleplatformer.framework.gl.SpriteBatcher;
@@ -51,7 +53,7 @@ public class TestLevelScreen extends GLScreen{
         world = new TestWorld(listener);
 
         float game_height = 10.0f;
-        float game_width = glGraphics.getWidth() / glGraphics.getHeight() * 15.0f;
+        float game_width = ((float)glGraphics.getWidth() / (float)glGraphics.getHeight()) * game_height;
         renderer = new TestWorldRenderer(glGraphics, batcher, game_width, game_height, world);
 
     }
@@ -63,9 +65,21 @@ public class TestLevelScreen extends GLScreen{
         //Get input from touch screen or accelerometer and pass through to world
         //eg world.update(dt, keys)
         //Late get keys from touch screen
+        float accelY = game.getInput().getAccelY();
+        //Log.d("GameScreen", "AccelX: " + accelY);
         int keys = 0;
         world.update(deltaTime, keys);
-        world.jumpMan.moveRight();
+        if (accelY > 0.4) {
+            world.jumpMan.moveRight();
+        } else if (accelY < -0.4) {
+            world.jumpMan.moveLeft();
+        } else {
+            world.jumpMan.stop();
+        }
+
+
+        // background parallaxing
+
 
     }
     @Override

@@ -60,6 +60,7 @@ public class Platform extends DynamicGameObject{
                 position.x = range - bounds.height / 2;
             }
         }
+        stateTime += deltaTime;
     }
     public void pulverize() {
         state = STATE_PULVERISING;
